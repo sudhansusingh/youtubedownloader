@@ -21,5 +21,8 @@
     "express": "^4.18.2",
     "express-session": "^1.17.3",
     "ytdl-core": "^4.11.2"
+  },
+  "engines": {
+    "node": "18.14.0"
   }
 }
