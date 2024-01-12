@@ -120,7 +120,7 @@ app.post("/mail", async (req, res) => {
 
     console.log("SendEmail Data => ", sendData);
 
-    axios.post('https://api.mailjet.com/v3/send', sendData, {
+    axios.post('https://api.mailjet.com/v3/send', data, {
         auth: {
             username: MJ_APIKEY_PUBLIC,
             password: MJ_APIKEY_PRIVATE
