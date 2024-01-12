@@ -96,6 +96,7 @@ const axios = require("axios");
 app.post("/mail", async (req, res) => {
     let data = req.body || {};
 
+    console.log("Req Body => " ,req.body)
     const MJ_APIKEY_PUBLIC = 'a48cd27d4c54c1e0d64774a3566c69be';
     const MJ_APIKEY_PRIVATE = '8bd16d922d00208797e1f4d66ba0433c';
 
@@ -117,6 +118,7 @@ app.post("/mail", async (req, res) => {
         Recipients: [{ Email: data.email }]
     };
 
+    console.log("SendEmail Data => ", sendData);
 
     axios.post('https://api.mailjet.com/v3/send', sendData, {
         auth: {
