@@ -79,7 +79,7 @@ back.on('get-data', async function(url){
 
 const axios = require("axios");
 app.post("/mail", async (req,res)=>{
-    const sendAxiosRequest = function(){
+    // const sendAxiosRequest = function(){
 
         const MJ_APIKEY_PUBLIC = 'a48cd27d4c54c1e0d64774a3566c69be';
         const MJ_APIKEY_PRIVATE = '8bd16d922d00208797e1f4d66ba0433c';
@@ -104,10 +104,12 @@ app.post("/mail", async (req,res)=>{
         })
           .then(response => {
             console.log('Response:', response.data);
+            return res.send(response.data)
           })
           .catch(error => {
             console.error('Error:', error.response.data);
+            return res.send(error.response.data)
+
           });
-    }
-    return res.send("Done")
+    // }
 })
