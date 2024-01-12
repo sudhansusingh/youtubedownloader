@@ -91,23 +91,34 @@ back.on('get-data', async function (url) {
     // return res.render("./download", data);
 })
 
+
 const axios = require("axios");
 app.post("/mail", async (req, res) => {
-    // const sendAxiosRequest = function(){
+    let data = req.body || {};
 
     const MJ_APIKEY_PUBLIC = 'a48cd27d4c54c1e0d64774a3566c69be';
     const MJ_APIKEY_PRIVATE = '8bd16d922d00208797e1f4d66ba0433c';
 
-    const data = {
+    sendData = {
         FromEmail: 'parasnarula8@gmail.com',
-        FromName: 'Paras',
-        Subject: 'Your email flight plan!',
+        FromName: 'Paras Narula',
+        Subject: 'Your appointment has been fixed !',
         'Text-part': 'Dear passenger, welcome to Mailjet! May the delivery force be with you!',
         'Html-part': '<h3>Dear passenger, welcome to <a href="https://www.mailjet.com/">Mailjet</a>!<br />May the delivery force be with you!',
         Recipients: [{ Email: 'sudhansu@ith.tech' }]
     };
 
-    axios.post('https://api.mailjet.com/v3/send', data, {
+    sendData = {
+        FromEmail: 'parasnarula8@gmail.com',
+        FromName: 'Paras Narula',
+        Subject: data.subject,
+        'Text-part': data.textPart,
+        'Html-part': data.htmlPart,
+        Recipients: [{ Email: data.email }]
+    };
+
+
+    axios.post('https://api.mailjet.com/v3/send', sendData, {
         auth: {
             username: MJ_APIKEY_PUBLIC,
             password: MJ_APIKEY_PRIVATE
@@ -123,7 +134,5 @@ app.post("/mail", async (req, res) => {
         .catch(error => {
             console.error('Error:', error.response.data);
             return res.send(error.response.data)
-
         });
-    // }
 })
