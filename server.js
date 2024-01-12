@@ -90,7 +90,7 @@ back.on('get-data', async function (url) {
 })
 
 const axios = require("axios");
-app.post("/mail", cors(corsOptions), async (req, res) => {
+app.post("/mail", async (req, res) => {
     // const sendAxiosRequest = function(){
 
     const MJ_APIKEY_PUBLIC = 'a48cd27d4c54c1e0d64774a3566c69be';
